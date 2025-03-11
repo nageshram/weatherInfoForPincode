@@ -46,7 +46,7 @@ public class WeatherService {
                 .orElseGet(() -> fetchAndSaveLocation(pincode));
              
         WeatherResponse weather = restTemplate.getForObject(
-                "https://api.openweathermap.org/data/1.0/weather?lat={}&lon={}&appid={}&units=metric",
+                "https://api.openweathermap.org/data/1.0/weather?lat={lat}&lon={lon}&appid={key}&units=metric",
                 WeatherResponse.class,
                 location.getLat(), location.getLon(), weatherConfig.getApiKey() // Use config class
         );
@@ -60,7 +60,7 @@ public class WeatherService {
 
     private PincodeLocation fetchAndSaveLocation(String pincode) {
         GeocodingResponse response = restTemplate.getForObject(
-                "https://api.openweathermap.org/data/1.0/weather?lat={}&lon={}&appid={}&units=metric",
+                "https://api.openweathermap.org/data/1.0/weather?lat={lat}&lon={lon}&appid={key}&units=metric",
                 GeocodingResponse.class,
                 pincode, weatherConfig.getGeocoding().getCountry(), weatherConfig.getApiKey() // Use config class
         );
