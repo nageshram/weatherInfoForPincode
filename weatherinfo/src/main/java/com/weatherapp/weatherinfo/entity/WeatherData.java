@@ -2,6 +2,8 @@ package com.weatherapp.weatherinfo.entity;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.weatherapp.weatherinfo.entity.WeatherDataKey;
 import lombok.Data;
 
@@ -9,21 +11,22 @@ import lombok.Data;
 @Data
 public class WeatherData {
     @EmbeddedId
+    @JsonProperty("id") 
     private WeatherDataKey id;
     private Double temperature;
     private Double humidity;
     
     public WeatherData() {
-		super();
+		//super();
 	}
     
     public WeatherData(WeatherDataKey id, Double temperature, Double humidity) {
-		super();
 		this.id = id;
 		this.temperature = temperature;
 		this.humidity = humidity;
 	}
-	
+
+    @JsonProperty("id") 
 	public WeatherDataKey getId() {
 		return id;
 	}
@@ -42,6 +45,5 @@ public class WeatherData {
 	public void setHumidity(double humidity) {
 		this.humidity = humidity;
 	}
-    
     
 }

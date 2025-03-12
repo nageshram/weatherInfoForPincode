@@ -1,6 +1,7 @@
 package com.weatherapp.weatherinfo.controller;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,7 +21,6 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/weather")
 @RequiredArgsConstructor
 public class WeatherController {
-    @Autowired
 	private final WeatherService weatherService;
 
     
@@ -33,7 +33,9 @@ public class WeatherController {
 	@GetMapping
     public ResponseEntity<WeatherData> getWeather(
             @RequestParam String pincode,
-            @RequestParam @DateTimeFormat(iso = ISO.DATE) LocalDate forDate) {
-        return ResponseEntity.ok(weatherService.getWeather(pincode, forDate));
+            @RequestParam @DateTimeFormat(iso = ISO.DATE) String forDate) {
+		
+		LocalDate date = LocalDate.parse(forDate, DateTimeFormatter.ISO_LOCAL_DATE);
+        return ResponseEntity.ok(weatherService.getWeather(pincode, date));
     }
 }

@@ -11,6 +11,7 @@ import lombok.Data;
 public class WeatherConfig {
 	private String apiKey;
     private Geocoding geocoding;
+    
 	public String getApiKey() {
 		return apiKey;
 	}
