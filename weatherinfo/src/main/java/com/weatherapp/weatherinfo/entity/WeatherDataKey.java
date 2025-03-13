@@ -8,20 +8,34 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Embeddable;
 import lombok.Data;
 
+/*
+ * This is capable to store user submitted parameter such as for date and pincode
+ * while submitting the request to our application
+ * using this class  we are fetching weather data and pincode location(not completely but used as an object while fetching) 
+ */
+
 @Embeddable
 @Data
 public class WeatherDataKey implements Serializable {
-    /**
-	 * 
-	 */
+    
 	private static final long serialVersionUID = 1L;
-	/**
-	 * 
-	 */
 	private String pincode;
+	
 	@JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate forDate;
     
+	public WeatherDataKey() {
+		
+	}
+	
+	public WeatherDataKey(String pincode, LocalDate forDate) {
+		this.pincode = pincode;
+		this.forDate = forDate;
+	}
+	
+	public WeatherDataKey(String pincode2, String string) {
+	}
+	
 	public String getPincode() {
 		return pincode;
 	}
@@ -35,15 +49,5 @@ public class WeatherDataKey implements Serializable {
 	public void setForDate(LocalDate forDate) {
 		this.forDate = forDate;
 	}
-	public WeatherDataKey() {
-		//super();
-	}
-	public WeatherDataKey(String pincode, LocalDate forDate) {
-		//super();
-		this.pincode = pincode;
-		this.forDate = forDate;
-	}
-	public WeatherDataKey(String pincode2, String string) {
-		// TODO Auto-generated constructor stub
-	}
+	
 }

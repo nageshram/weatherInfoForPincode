@@ -9,6 +9,7 @@ import lombok.Data;
 @ConfigurationProperties(prefix = "openweather")
 @Data
 public class WeatherConfig {
+	//To map the attributes specified in application.prpoerties make sure you have the same name in both config and proprties
 	private String apiKey;
     private Geocoding geocoding;
     

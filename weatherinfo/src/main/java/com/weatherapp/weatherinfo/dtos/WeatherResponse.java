@@ -1,11 +1,24 @@
 package com.weatherapp.weatherinfo.dtos;
-
 import lombok.Data;
+
 
 @Data
 public class WeatherResponse {
     private Main main;
-
+    
+    /* This class is created to catch the response from api when we request weather(openweather API)
+     *  so we created inner class here( response will come in this format)
+     * that works like 
+     * {
+     *    "WeatherResponse:{
+     *    		"main":{
+     *    		"humidity":45.0,
+     *    		"temperature:60
+     *           }
+     *    
+     *    }
+     * but those words main and weatherResponse wont appear in our real response but i mentioned here for demo 
+     */
     @Data
     public static class Main {
         private double temp;

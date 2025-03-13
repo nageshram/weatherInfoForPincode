@@ -3,8 +3,12 @@ package com.weatherapp.weatherinfo.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
+/*
+ * Entity class for storing pincode location
+ * This class is helpful for repository purpose
+ * These are the main classes for operation of entire project
+ */
 
-//https://github.com/nageshram/weatherInfoForPincode.git
 @Entity
 @Data
 public class PincodeLocation {

@@ -7,6 +7,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.weatherapp.weatherinfo.entity.WeatherDataKey;
 import lombok.Data;
 
+/**
+ * This is the main class for storing weather data in repository as well as all operations
+ * our application responses is made using this class
+ * Weather key is an object to fetch the request parameters and used to store the the same inside weather data
+ */
+
+
 @Entity
 @Data
 public class WeatherData {

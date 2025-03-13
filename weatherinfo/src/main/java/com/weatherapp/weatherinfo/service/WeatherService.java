@@ -14,7 +14,18 @@ import com.weatherapp.weatherinfo.repository.PincodeLocationRepository;
 import com.weatherapp.weatherinfo.repository.WeatherDataRepository;
 
 import lombok.RequiredArgsConstructor;
-
+/*
+ * NOTE classses names :
+ * Data flow:
+ * weather data request (with parameters pincode and fordate):
+ * 
+ * if the latitude and longitude info is not in our database :
+ * 			we will get them using geocodindg api and catching the response using geocodingResponse and save it as PincodeLocation
+ * 			after getting location data we will fetch the data from api and catch that response using weatherResponse.
+ * 			we will save both weather data with weatherKey data and return the same to user as WeatherData 
+ * 
+ * else if location is present in our db we will fetch only weather data from api and return the response.
+ */
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +34,8 @@ public class WeatherService {
     private final WeatherDataRepository weatherDataRepo;
     private  final RestTemplate restTemplate;
     private  final WeatherConfig weatherConfig; 
+    
+    
     
     public WeatherService(
             PincodeLocationRepository pincodeLocationRepo,

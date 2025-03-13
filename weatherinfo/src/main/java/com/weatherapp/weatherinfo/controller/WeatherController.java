@@ -29,12 +29,13 @@ public class WeatherController {
 		this.weatherService = weatherService;
 	}
 
-
+  // our get requests will contact the below code for responses
 	@GetMapping
     public ResponseEntity<WeatherData> getWeather(
             @RequestParam String pincode,
             @RequestParam @DateTimeFormat(iso = ISO.DATE) String forDate) {
 		
+	    //parsing the date in string format to Date format	
 		LocalDate date = LocalDate.parse(forDate, DateTimeFormatter.ISO_LOCAL_DATE);
         return ResponseEntity.ok(weatherService.getWeather(pincode, date));
     }
