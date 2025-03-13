@@ -4,8 +4,8 @@ import lombok.Data;
 /*
  * 
  * This class is essential to fetch the latitude ad longitude using pincode(zip)
- * if lat and lon is not saved in our database we will send request to get lan and lat  
- * to our request we will catch response using this class
+ * if lat and lon is not saved in our database we will send request to get lan and lat. 
+ * To our geocoding request we will catch that api response using this class
  * 
  */
 
